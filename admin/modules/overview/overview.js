@@ -4,7 +4,7 @@
 var overview = angular.module('overview', ['ui.router', 'ui.router.stateHelper']);
 
 //overview模块路由和依赖配置
-overview.config(function ($stateProvider, $urlRouterProvider) {
+overview.config(function ($stateProvider) {
 
   $stateProvider.state({
     name: 'overview',
