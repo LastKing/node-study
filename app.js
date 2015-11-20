@@ -22,9 +22,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+//开启session
 app.use(session({
-  name: 'sbuu_session_id',
-  secret: 'sbuu',
+  name: 'toonew_session_id',
+  secret: 'toonew',
   resave: false,
   saveUninitialized: true
 }));
@@ -66,6 +67,5 @@ app.use(function (err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
