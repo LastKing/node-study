@@ -2,7 +2,7 @@
  * Created by Rain on 2015/11/20.
  */
 var root = angular.module('root', ['ui.router', 'ui.router.stateHelper', 'ui.bootstrap', 'lazyload',
-  'overview']);
+  'overview','user']);
 
 root.config(function ($stateProvider, $urlRouterProvider) {
   //默认到overview路由
@@ -23,10 +23,3 @@ root.config(function ($stateProvider, $urlRouterProvider) {
   });
 
 });
-
-
-
-
-
-
-
