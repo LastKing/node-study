@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="root">
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href=""/>
+    <link rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="assets/css/beyond.css"/>
 </head>
 <body>
+
+<!--插座-->
+<div ui-view></div>
+
+<script src="assets/js/jquery-2.0.3.min.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/skins.js"></script>
+<script src="assets/js/beyond.js"></script>
+<script src="assets/js/toastr/toastr.js"></script>
+
+
+<script src="assets/js/angularjs/angular.js"></script>
+<script src="assets/js/angularjs/angular-ui-router.js"></script>
+<script src="assets/js/angularjs/angularjs-statehelper.js"></script>
+
+
+<!-- 模块插件-->
+<script src="modules/root/root.js"></script>
+<script src="modules/overview/overview.js"></script>
 
 </body>
 </html>

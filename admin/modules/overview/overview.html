@@ -1,0 +1,54 @@
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a ui-sref="overview">概览页面</a>
+        </li>
+    </ul>
+</div>
+<div class="page-header position-relative">
+    <div class="header-title">
+        <h1>
+            概览
+        </h1>
+    </div>
+    <div class="header-buttons">
+        <a class="sidebar-toggler">
+            <i class="fa fa-arrows-h"></i>
+        </a>
+        <a class="refresh" id="refresh-toggler" ui-sref="overview">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </a>
+        <a class="fullscreen" id="fullscreen-toggler">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+        </a>
+    </div>
+</div>
+
+<div class="page-body">
+    <div ng-if="currentUser.role=='admin'">
+        <div class="text-center margin-bottom-50">
+            <h2>AngularJS模块化开发说明</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-push-2 col-xs-8">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4>AngularJS模块化开发说明</h4>
+                        <small>这是AngularJS的模块化开发声明文档,客户请无视,以后会替换</small>
+                    </div>
+                    <div class="panel-body">
+                        <blockquote>新的模块请在modules建立新的文件夹</blockquote>
+                        <blockquote>任何模块中的路由配置都应该配置为root的后代路由</blockquote>
+                        <blockquote>详细配置请参照root/root.js</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="currentUser.role!='admin'">
+        <div class="text-center margin-bottom-50">
+            <h2>世优科技-管理后台</h2>
+        </div>
+    </div>
+</div>
