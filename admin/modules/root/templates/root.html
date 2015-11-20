@@ -1,3 +1,132 @@
-<div>
-    sss{{title}}
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="navbar-container">
+            <div class="navbar-header pull-left">
+                <a ui-sref="overview" class="navbar-brand">
+                    <small>
+                        <img src="assets/img/logo.png" alt=""/>
+                    </small>
+                </a>
+            </div>
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="collapse-icon fa fa-bars"></i>
+            </div>
+            <div class="navbar-header pull-right">
+                <div class="navbar-account">
+                    <ul class="account-area">
+                        <li>
+                            <a class="login-area dropdown-toggle" data-toggle="dropdown" style="min-width: 200px;">
+                                <div class="avatar" title="View your public profile">
+                                    <img src="assets/img/avatars/Javi-Jimenez.jpg">
+                                </div>
+                                <section>
+                                    <h2><span class="profile"><span>{{currentUser.name}}</span></span></h2>
+                                </section>
+                            </a>
+                            <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                <li class="email"><a>{{currentUser.name}}</a></li>
+                                <li>
+                                    <div class="avatar-area">
+                                        <img src="assets/img/avatars/Javi-Jimenez.jpg" class="avatar">
+                                        <span class="caption">修改头像</span>
+                                    </div>
+                                </li>
+                                <li class="edit">
+                                    <a href="profile.html" class="pull-left">个人页面</a>
+                                </li>
+                                <li class="theme-area">
+                                    <ul class="colorpicker" id="skin-changer">
+                                        <li><a class="colorpick-btn" style="background-color:#5DB2FF;"
+                                               rel="assets/css/skins/blue.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#2dc3e8;"
+                                               rel="assets/css/skins/azure.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#03B3B2;"
+                                               rel="assets/css/skins/teal.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#53a93f;"
+                                               rel="assets/css/skins/green.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#FF8F32;"
+                                               rel="assets/css/skins/orange.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#cc324b;"
+                                               rel="assets/css/skins/pink.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#AC193D;"
+                                               rel="assets/css/skins/darkred.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#8C0095;"
+                                               rel="assets/css/skins/purple.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#0072C6;"
+                                               rel="assets/css/skins/darkblue.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#585858;"
+                                               rel="assets/css/skins/gray.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#474544;"
+                                               rel="assets/css/skins/black.min.css"></a></li>
+                                        <li><a class="colorpick-btn" style="background-color:#001940;"
+                                               rel="assets/css/skins/deepblue.min.css"></a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-footer">
+                                    <a ng-click="logout()">
+                                        退出系统
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="setting">
+                        <a id="btn-setting" title="Setting">
+                            <i class="icon glyphicon glyphicon-cog"></i>
+                        </a>
+                    </div>
+                    <div class="setting-container">
+                        <label>
+                            <input type="checkbox" id="checkbox_fixednavbar">
+                            <span class="text">固定导航条</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="checkbox_fixedsidebar">
+                            <span class="text">固定侧边栏</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="checkbox_fixedbreadcrumbs">
+                            <span class="text">固定标题</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="checkbox_fixedheader">
+                            <span class="text">固定头部</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <div class="page-sidebar" id="sidebar">
+            <div class="sidebar-header-wrapper">
+            </div>
+            <ul class="nav sidebar-menu">
+                <li ng-repeat="current in menu" ui-sref-active="active">
+                    <a ui-sref={{current.route}} ng-if="!current.children">
+                        <i class={{current.icon}}></i>
+                        <span class="menu-text">{{current.name}} </span>
+                    </a>
+                    <a href="#" class="menu-dropdown" ng-if="current.children">
+                        <i class={{current.icon}}></i>
+                        <span class="menu-text"> {{current.name}} </span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu" ng-if="current.children">
+                        <li ng-repeat="child in current.children" ui-sref-active="active">
+                            <a ui-sref={{child.route}}>
+                                <span class="menu-text">{{child.name}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="page-content" ui-view></div>
+    </div>
+</div>
+
