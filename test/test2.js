@@ -20,7 +20,9 @@ var insertDocument = function (db, callback) {
   //获取文档
   var collection = db.collection('user');
   collection.insertMany([
-    {a: 1}, {a: 2}, {a: 3}
+    {userName: 'a', password: 'a'},
+    {userName: 'b', password: 'b'},
+    {userName: 'c', password: 'c'}
   ], function (err, result) {
     assert.equal(err, null);
     assert.equal(3, result.result.n);
