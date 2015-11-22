@@ -4,23 +4,23 @@
 var express = require('express');
 var router = express.Router();
 
-router.post('/login.do', (req, res)=> {
+var userService = require('../services/user');
 
+router.post('/login.do', (req, res)=> {
   var userName = req.body.userName;
   var password = req.body.password;
 
-  if (userName === 'a' && password == 'a') {
-    var admin = {
-      userName: userName,
-      password: password
-    };
-    req.session.user = admin;
-    req.session.user.role = 'admin';
+  userService.getByName(userName, password, function (err, items) {
+    if (err) {
+      res.send(JSON.stringify({result: -1, reason: '查询错误！~！' + err}));
+    } else {
+      console.log(items);
+      req.session.user = {userName: userName, password: password};
+      req.session.user.role = 'admin';
+      res.send(JSON.stringify({result: 0}));
+    }
+  });
 
-    res.send(JSON.stringify({result: 0}));
-  } else {
-    res.send(JSON.stringify({result: -1, reason: '账户或者密码错误！~！'}))
-  }
 });
 
 router.post('/logout.do', (req, res)=> {
