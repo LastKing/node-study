@@ -12,6 +12,22 @@ var RootCtrl = root.controller('RootCtrl', function ($scope, $state, $http) {
       name: '用户管理',
       icon: 'menu-icon fa fa-user',
       route: 'user'
+    },{
+      name: '用户管理',
+      icon: 'menu-icon fa fa-user',
+      children: [
+        {
+          name: '模型管理',
+          icon: 'menu-icon fa fa-home',
+          route: 'resource.model'
+        },
+        {
+          name: '场景管理',
+          icon: 'menu-icon fa fa-home',
+          route: 'resource.scene'
+        }
+      ]
+
     }
   ];
 
@@ -31,7 +47,7 @@ var RootCtrl = root.controller('RootCtrl', function ($scope, $state, $http) {
         Notify('你的登录已失效,请重新登录', 'top-right', '5000', 'danger', 'fa-bolt', true);
         setTimeout(function () {
           window.location.href = "index.html";
-        }, 10);
+        }, 1000);
       } else {
         switch (user.role) {
           case 'admin':

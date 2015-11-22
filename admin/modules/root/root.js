@@ -23,3 +23,14 @@ root.config(function ($stateProvider, $urlRouterProvider) {
   });
 
 });
+
+root.run(['$rootScope', '$log', function ($rootScope, $log) {
+  //挂钩AngularJS渲染完成事件,在渲染完成的时候,执行初始化界面的工作,让Beyond模板中的一些功能起作用
+  $rootScope.$on('$viewContentLoaded',
+    function (event, viewConfig) {
+      var before = new Date();
+      beyondInit();
+      var after = new Date();
+      $log.debug("扫描并初始化界面元素 [耗时 " + (after.getTime() - before.getTime()) + " ms]");
+    });
+}]);
