@@ -26,9 +26,9 @@ MongoClient.connect(url, function (err, db) {
   var col = db.collection('user');
   // Insert a bunch of documents
   col.insertMany([
-    {userName: 'a', password: 'a'},
-    {userName: 'b', password: 'b'},
-    {userName: 'c', password: 'c'}
+    {id: '1111-2222-3333', userName: 'a', password: 'a'},
+    {id: '2222-3333-4444', userName: 'b', password: 'b'},
+    {id: '3333-4444-5555', userName: 'c', password: 'c'}
   ], {w: 1}, function (err, result) {
     test.equal(null, err);
   });

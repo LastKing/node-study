@@ -52,8 +52,30 @@ var getByName = function (userName, password, callback) {
   });
 };
 
+var remove = function (id, callback) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) {
+      callback('数据库连接错误');
+    } else {
+      var user = db.collection('user');
+      user.removeOne({id: id}, function (err, result) {
+        if (err) {
+          callback(err);
+        } else {
+          if (result) {
+            callback(null, result);
+          } else {
+            callback('账户不存在');
+          }
+        }
+      })
+    }
+  });
+};
+
 module.exports = {
   get: get,
   getByName: getByName,
-  getAll: getAll
+  getAll: getAll,
+  remove: remove
 };
