@@ -7,6 +7,7 @@ user.config(function ($stateProvider) {
   var baseUrl = "modules/user";
   var templatesBaseUrl = baseUrl + "/templates";
   var controllersBaseUrl = baseUrl + "/controllers";
+  var servicesBaseUrl = baseUrl + "/services";
 
   $stateProvider.state({
     name: 'user',
@@ -16,7 +17,8 @@ user.config(function ($stateProvider) {
     controller: 'UserCtrl',
     resolve: {
       userModule: dependencies('user', [
-        controllersBaseUrl + '/user.js'
+        controllersBaseUrl + '/user.js',
+        servicesBaseUrl + '/user.js'
       ])
     }
   });

@@ -4,13 +4,13 @@
 var express = require('express');
 var router = express.Router();
 
-var userService = require('../services/user');
+var UserService = require('../services/user');
 
 router.post('/login.do', (req, res)=> {
   var userName = req.body.userName;
   var password = req.body.password;
 
-  userService.getByName(userName, password, function (err, items) {
+  UserService.getByName(userName, password, function (err, items) {
     if (err) {
       res.send(JSON.stringify({result: -1, reason: '查询错误！~！' + err}));
     } else {

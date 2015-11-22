@@ -10,6 +10,27 @@ var get = function (id) {
   return mongo.user.find({id: id});
 };
 
+var getAll = function (callback) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) {
+      callback('数据库连接失败');
+    } else {
+      var user = db.collection('user');
+      user.find().toArray(function (err, items) {
+        if (err) {
+          callback(err);
+        } else {
+          if (items.length > 0) {
+            callback(null, items);
+          } else {
+            callback('不存在账户');
+          }
+        }
+      });
+    }
+  });
+};
+
 var getByName = function (userName, password, callback) {
   MongoClient.connect(url, function (err, db) {
     if (err) {
@@ -33,5 +54,6 @@ var getByName = function (userName, password, callback) {
 
 module.exports = {
   get: get,
-  getByName: getByName
+  getByName: getByName,
+  getAll: getAll
 };
