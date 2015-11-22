@@ -20,7 +20,6 @@ router.post('/login.do', (req, res)=> {
       res.send(JSON.stringify({result: 0}));
     }
   });
-
 });
 
 router.post('/logout.do', (req, res)=> {

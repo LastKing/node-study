@@ -13,7 +13,7 @@ var get = function (id) {
 var getByName = function (userName, password, callback) {
   MongoClient.connect(url, function (err, db) {
     if (err) {
-      callback(err);
+      callback('数据库连接失败');
     } else {
       var user = db.collection('user');
       user.find({userName: userName, password: password}).toArray(function (err, items) {
