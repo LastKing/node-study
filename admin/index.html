@@ -20,7 +20,7 @@
             <input type="text" class="form-control" id="userName" name="userName" placeholder="账户名">
         </div>
         <div class="loginbox-textbox">
-            <input type="text" class="form-control" id="password" name="password" placeholder="密码">
+            <input type="password" class="form-control" id="password" name="password" placeholder="密码">
         </div>
         <div class="loginbox-forgot">
             <a href="#">忘记密码?</a>
@@ -48,7 +48,7 @@
                     window.location.href = "manager.html";
                 }, 1000);
             } else {
-                alert(data.reason);
+                Notify('登陆失败'+data.reason, 'top-right', '5000', 'danger', 'fa-bolt', true);
             }
         }, 'json');
     });
