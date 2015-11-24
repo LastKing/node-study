@@ -14,7 +14,6 @@ router.post('/login.do', (req, res)=> {
     if (err) {
       res.send(JSON.stringify({result: -1, reason: '查询错误！~！' + err}));
     } else {
-      console.log(items);
       req.session.user = {userName: userName, password: password};
       req.session.user.role = 'admin';
       res.send(JSON.stringify({result: 0}));

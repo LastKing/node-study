@@ -13,14 +13,41 @@ var auth = require('./routes/auth');
 
 var app = express();
 
-// view engine setup
+// 模版设定
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //app.use(logger('dev'));
+
+//log4js 的 appenders 设定
+log4js.configure({
+  "appenders": [
+    {type: 'console'}, //控制台输出
+    {//正常日志输出
+      type: 'file',
+      filename: require('config').get('logPath') + '/debug.log',
+      maxLogSize: 204800,
+      backups: 4
+    },
+    {//错误级别日志输出
+      type: 'logLevelFilter',
+      level: 'ERROR',
+      appender: {
+        type: 'file',
+        filename: require('config').get('logPath') + '/error.log',
+        maxLogSize: 204800,
+        backups: 4
+      }
+    }
+  ]
+});
+
+//更换 log4js 的 命令行 输出
 app.use(log4js.connectLogger(log4js.getLogger('express'), {level: log4js.levels.INFO}));
+
+//开启 body 解析。。。
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -32,9 +59,11 @@ app.use(session({
   saveUninitialized: true
 }));
 
+//开启 静态 静态文件路径
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'admin')));
 
+//路由设定
 app.use('/', routes);
 app.use('/user', user);
 app.use('/auth', auth);
