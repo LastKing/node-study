@@ -68,6 +68,7 @@ app.use('/admin', express.static(path.join(__dirname, 'admin')));
 
 //路由设定
 app.use('/', routes);
+
 /** 配置 后台管理页面 路由 **/
 app.use('/admin_user', user);
 app.use('/admin_auth', auth);

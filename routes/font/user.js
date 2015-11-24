@@ -6,9 +6,8 @@ var router = express.Router();
 
 var UserService = require('../../services/user');
 
-
-router.get('/', function (req, res) {
-  res.send('respond with a resource');
+router.get('/registered.do', function (req, res) {
+  res.render('font/registered', {test: 'test'});
 });
 
 
