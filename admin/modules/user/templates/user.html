@@ -20,13 +20,16 @@
             <div class="well with-header  with-footer">
                 <div class="header bg-blue">
                     用户信息列表
+                    <div class="text-right" style="float:right">
+                        <span class="text-right"><button class="btn btn-primary" ng-click="add()">添加</button></span>
+                    </div>
                 </div>
                 <div ng-if="!users">
                     <div style="width:100%;height:100%">
                         <img src="assets/img/loading2.gif" style="width:100%;height:100%" alt=""/>
                     </div>
                 </div>
-                
+
                 <div ng-if="users">
                     <table class="table table-hover">
                         <thead class="bordered-darkorange">

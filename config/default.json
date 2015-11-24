@@ -1,4 +1,7 @@
 // Created by Rain on 2015/11/24.
 {
-  "logPath": "d:\\toonew\\log"
+  //mongo 数据库的连接地址
+  "mongodb": "mongodb://localhost:27017/toonew",
+  //日志路径
+  "logPath": "d:\\toonew\\logs"
 }

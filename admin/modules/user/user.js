@@ -18,7 +18,8 @@ user.config(function ($stateProvider) {
     resolve: {
       userModule: dependencies('user', [
         controllersBaseUrl + '/user.js',
-        servicesBaseUrl + '/user.js'
+        servicesBaseUrl + '/user.js',
+        controllersBaseUrl + '/user/add_modal.js'
       ])
     }
   });
