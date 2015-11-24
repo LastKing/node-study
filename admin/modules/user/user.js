@@ -13,13 +13,13 @@ user.config(function ($stateProvider) {
     name: 'user',
     url: '/user',
     parent: 'root',
-    templateUrl: templatesBaseUrl + '/user.html',
+    templateUrl: templatesBaseUrl + '/list.html',
     controller: 'UserCtrl',
     resolve: {
       userModule: dependencies('user', [
-        controllersBaseUrl + '/user.js',
+        controllersBaseUrl + '/list.js',
         servicesBaseUrl + '/user.js',
-        controllersBaseUrl + '/user/add_modal.js'
+        controllersBaseUrl + '/list/add_modal.js'
       ])
     }
   });

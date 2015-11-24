@@ -8,7 +8,7 @@ var UserCtrl = user.controller('UserCtrl', function ($scope, $modal, UserService
 
   $scope.add = function () {
     var user = $modal.open({
-      templateUrl: 'modules/user/templates/user/add_modal.html',
+      templateUrl: 'modules/user/templates/list/add_modal.html',
       controller: 'UserAddModal'
     });
 
