@@ -4,7 +4,7 @@
 var express = require('express');
 var router = express.Router();
 
-var UserService = require('../services/user');
+var UserService = require('../../services/user');
 
 router.post('/login.do', (req, res)=> {
   var userName = req.body.userName;

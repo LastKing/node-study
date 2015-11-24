@@ -41,7 +41,7 @@
     $('#login').on('click', function () {
         var userName = $('#userName').val();
         var password = $('#password').val();
-        $.post('/auth/login.do', {userName: userName, password: password}, function (data) {
+        $.post('/admin_auth/login.do', {userName: userName, password: password}, function (data) {
             if (data.result == 0) {
                 Notify('登陆成功', 'top-right', '5000', 'success', 'fa-bolt', true);
                 setTimeout(function () {

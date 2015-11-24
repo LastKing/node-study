@@ -7,9 +7,12 @@ var log4js = require('log4js');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var user = require('./routes/user');
-var auth = require('./routes/auth');
+var routes = require('./routes/admin/index');
+var user = require('./routes/admin/user');
+var auth = require('./routes/admin/auth');
+
+/******前端页面*******/
+var font_user = require('./routes/font/user');
 
 var app = express();
 
@@ -65,8 +68,12 @@ app.use('/admin', express.static(path.join(__dirname, 'admin')));
 
 //路由设定
 app.use('/', routes);
-app.use('/user', user);
-app.use('/auth', auth);
+/** 配置 后台管理页面 路由 **/
+app.use('/admin_user', user);
+app.use('/admin_auth', auth);
+
+/** 配置前端路由 **/
+app.use('/font_user', font_user);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -5,7 +5,7 @@ user.controller('UserAddModal', function ($modalInstance, $scope, UserService) {
   $scope.title = '用户添加';
 
   $scope.registered = function () {
-    if ($scope.addUser.$invalid) {
+    if ($scope.addUser.$valid) {
       UserService.add($scope.user).success(function (data) {
         if (data.result == 0) {
           Notify('添加成功', 'top-right', '3000', 'success', 'fa-bolt', true);

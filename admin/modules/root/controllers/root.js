@@ -39,7 +39,7 @@ var RootCtrl = root.controller('RootCtrl', function ($scope, $state, $http) {
   //按照道理这里不应该这么写的,应该写成service,但是功能很简单就没这么干了
   $.ajax({
     type: "get",
-    url: "/auth/getCurrentUser.do",
+    url: "/admin_auth/getCurrentUser.do",
     async: false,
     success: function (data) {
       var user = eval('(' + data + ')');

@@ -4,15 +4,15 @@
 user.service('UserService', function ($http) {
 
   this.add = function (user) {
-    return $http.post('/user/add.do', user);
+    return $http.post('/admin_user/add.do', user);
   };
 
   this.remove = function (userId) {
-    return $http.post('/user/remove.do', {userId: userId});
+    return $http.post('/admin_user/remove.do', {userId: userId});
   };
 
   this.getAll = function () {
-    return $http.get('/user/getAll.do');
+    return $http.get('/admin_user/getAll.do');
   };
 
 });
