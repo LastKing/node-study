@@ -4,10 +4,17 @@
 var express = require('express');
 var router = express.Router();
 
-
 router.get('/register.do', (req, res)=> {
 
-  res.render('register', {title: '注册'});
+  var modal = {};
+  modal['title'] = "TooNew博客注册页面";
+
+  res.render('register', modal);
+});
+
+router.post('/register.do', (req, res)=> {
+  var user = req.body;
+
 });
 
 
