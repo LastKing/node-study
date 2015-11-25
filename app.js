@@ -12,6 +12,7 @@ var user = require('./routes/admin/user');
 var auth = require('./routes/admin/auth');
 
 /******前端页面*******/
+var font_auth = require('./routes/font/auth');
 var font_user = require('./routes/font/user');
 
 var app = express();
@@ -75,6 +76,7 @@ app.use('/admin_auth', auth);
 
 /** 配置前端路由 **/
 app.use('/font_user', font_user);
+app.use('/font_auth', font_auth);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
