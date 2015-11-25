@@ -7,11 +7,12 @@ var log4js = require('log4js');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/admin/index');
-var user = require('./routes/admin/user');
-var auth = require('./routes/admin/auth');
+var admin_index = require('./routes/admin/index');
+var admin_user = require('./routes/admin/user');
+var admin_auth = require('./routes/admin/auth');
 
 /******前端页面*******/
+var font_index = require('./routes/font/index');
 var font_auth = require('./routes/font/auth');
 var font_user = require('./routes/font/user');
 
@@ -26,6 +27,8 @@ app.set('view engine', 'hbs');
 //app.use(logger('dev'));
 
 //log4js 的 appenders 设定
+//*  配置日志
+//*  注意： 创建日志文件的目录， 并赋予对应的权限
 log4js.configure({
   "appenders": [
     {type: 'console'}, //控制台输出
@@ -67,12 +70,13 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'admin')));
 
-//路由设定
-app.use('/', routes);
+//基本根路径
+app.use('/', font_index);
 
 /** 配置 后台管理页面 路由 **/
-app.use('/admin_user', user);
-app.use('/admin_auth', auth);
+app.use('/admin_index', admin_index);
+app.use('/admin_user', admin_user);
+app.use('/admin_auth', admin_auth);
 
 /** 配置前端路由 **/
 app.use('/font_user', font_user);
