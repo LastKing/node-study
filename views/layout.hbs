@@ -7,6 +7,7 @@
     <link href="/admin/assets/css/bootstrap.css" rel="stylesheet">
     <link href="/admin/assets/css/beyond.css" rel="stylesheet"/>
     <link href="/admin/assets/css/animate.css" rel="stylesheet">
+    <link href="/admin/assets/css/font-awesome.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -17,7 +18,30 @@
 <script src="/admin/assets/js/skins.js"></script>
 <script src="/admin/assets/js/beyond.js"></script>
 <script src="/admin/assets/js/toastr/toastr.js"></script>
-<script src="/admin/assets/js/way.js"></script>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hidden-sm" href="/" style="margin-top:10px;">TooNew博客</a>
+        </div>
+        <div class="navbar-collapse collapse" role="navigation">
+            <div class="nav navbar-nav navbar-right hidden-sm" style="margin:5px;">
+                <form action="" class="form-inline">
+                    <a href="/font_auth/login.do" class="btn btn-primary"> 登陆</a>
+                    <a href="/font_auth/register.do" class="btn btn-success"> 注册</a>
+                    <input type="text" class="form-control input-sm"/>
+                    <button class="btn btn-default"> 搜索</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{{body}}}
 
