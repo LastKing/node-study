@@ -22,7 +22,8 @@ router.get('/register.do', (req, res)=> {
 router.post('/register.do', (req, res)=> {
   var user = req.body;
 
-  res.send("test", JSON.stringify({"result": 0}));
+  //res.send("test", JSON.stringify({"result": 0}));
+  res.render('index', {title: '主页'});
 });
 
 
