@@ -9,6 +9,8 @@ var MongoClient = require("mongodb").MongoClient;
 
 var add = function (user, callback) {
   user.id = uuid.v1();
+  user.createTime = new Date();
+  
   MongoClient.connect(url, function (err, db) {
     if (err) {
       callback('数据库连接失败');

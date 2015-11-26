@@ -68,7 +68,7 @@ var RootCtrl = root.controller('RootCtrl', function ($scope, $state, $http) {
    * 登出函数
    */
   $scope.logout = function () {
-    $http.post('/auth/logout.do', {}).success(function () {
+    $http.post('/admin_auth/logout.do', {}).success(function () {
       window.location.href = "index.html";
     });
   }

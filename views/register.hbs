@@ -1,5 +1,5 @@
-<div class="register-container animated fadeInDown">
-    <form action="/font_auth/register.do" id="register" method="post">
+<div class="register-container animated fadeInDown" style="margin:5% auto;">
+    <form id="register-form">
         <div class="registerbox bg-white">
             <div class="registerbox-title">注册</div>
 
@@ -15,8 +15,7 @@
             </div>
             <hr class="wide">
             <div class="registerbox-textbox" style="margin-bottom:20px">
-                <input type="email" class="form-control" name="email" placeholder="请输入邮箱">
-                <button class="btn btn-default pull-right">验证</button>
+                <input type="email" class="form-control" id="email" name="email" placeholder="请输入邮箱">
             </div>
             <div class="registerbox-textbox">
                 <input type="text" class="form-control" name="verificationCode" placeholder="请输入验证码">
@@ -30,7 +29,7 @@
                 </div>
             </div>
             <div class="registerbox-submit">
-                <input type="submit" class="btn btn-primary pull-right" value="注册">
+                <input type="button" id="register" class="btn btn-primary pull-right" value="注册">
             </div>
         </div>
     </form>
@@ -39,18 +38,27 @@
 <script>
     var map = {userName: "用户名", password: "密码", repassword: '确认密码', email: '邮箱', verificationCode: '验证码'};
 
-    $("#register").submit(map, function (event) {
-        var labelMap = event.data;
-        var label = '';
-        $(this).find(":text,:password").each(function () {
-            if (!this.value) {
-                label = labelMap[this.name];
-                return false;
-            }
-        });
-        if (label) {
-            Notify(label + "不能为空!", 'top-right', '5000', 'danger', 'fa-bolt', true);
-            return false;
-        }
+    //    $("#register").submit(map, function (event) {
+    //        var labelMap = event.data;
+    //        var label = '';
+    //        $(this).find(":text,:password").each(function () {
+    //            if (!this.value) {
+    //                label = labelMap[this.name];
+    //                return false;
+    //            }
+    //        });
+    //        if (label) {
+    //            Notify(label + "不能为空!", 'top-right', '5000', 'danger', 'fa-bolt', true);
+    //            return false;
+    //        }
+    //    });
+
+    $('#register').on('click', function () {
+        var user = $('#register-form').serializeArray();
+        $.post('/font_auth/register.do', user, function (data) {
+            alert(data);
+        }, "json");
     });
+
+
 </script>

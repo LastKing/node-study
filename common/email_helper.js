@@ -33,5 +33,5 @@ var sendMail = function (targetMail, verificationCode) {
 };
 
 module.exports = {
-  transport: transporter
+  sendMail: sendMail
 };

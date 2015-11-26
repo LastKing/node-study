@@ -10,6 +10,9 @@
  */
 var express = require('express');
 var router = express.Router();
+var email_helper = require('../../common/email_helper');
+
+var UserService = require('../../services/user');
 
 router.get('/register.do', (req, res)=> {
 
@@ -22,8 +25,21 @@ router.get('/register.do', (req, res)=> {
 router.post('/register.do', (req, res)=> {
   var user = req.body;
 
-  //res.send("test", JSON.stringify({"result": 0}));
-  res.render('index', {title: '主页'});
+  email_helper.sendMail(user.email, '我是验证码  999999');
+
+  UserService.add(user, function (err, result) {
+    if (err) {
+      res.send(JSON.stringify({"result": -1, "reason": "注册失败" + err}));
+    } else {
+      res.send(JSON.stringify({"result": 0, "data": result}));
+    }
+  });
+});
+
+
+router.post('/verificateEmail.do', (req, res)=> {
+
+  res.send(JSON.stringify({"result": 0, "data": "验证邮箱"}));
 });
 
 

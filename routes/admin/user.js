@@ -3,11 +3,6 @@ var router = express.Router();
 
 var UserService = require('../../services/user');
 
-/* GET users listing. */
-router.get('/', function (req, res) {
-  res.send('respond with a resource');
-});
-
 router.get('/getAll.do', function (req, res) {
   UserService.getAll((err, users)=> {
     if (err) {
