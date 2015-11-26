@@ -1,0 +1,37 @@
+<div class="login-container animated fadeInDown">
+    <form id="login-form">
+        <div class="loginbox bg-white">
+            <div class="loginbox-title">登 陆</div>
+            <div class="loginbox-or">
+                <div class="or-line"></div>
+                <div class="or">OR</div>
+            </div>
+            <div class="loginbox-textbox">
+                <input type="text" class="form-control" name="userName" placeholder="请输入用户名">
+            </div>
+            <div class="loginbox-textbox">
+                <input type="text" class="form-control" name="password" placeholder="请输入密码">
+            </div>
+            <div class="loginbox-forgot">
+                <a href="">忘记密码？</a>
+            </div>
+            <div class="loginbox-submit">
+                <input type="button" class="btn btn-primary btn-block" id="login" value="登陆">
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $("#login").on('click', function () {
+        var user = $('#login-form').serializeArray();
+
+        $.post('/font_auth/login.do', user, function (data) {
+            if (data.result == 0) {
+                Notify("登陆成功!马上跳转!", 'top-right', '5000', 'success', 'fa-bolt', true);
+            } else {
+                Notify("用户名或者密码错误!", 'top-right', '5000', 'danger', 'fa-bolt', true);
+            }
+        }, "json");
+    });
+</script>

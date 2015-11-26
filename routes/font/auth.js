@@ -14,6 +14,23 @@ var email_helper = require('../../common/email_helper');
 
 var UserService = require('../../services/user');
 
+router.get('/login.do', (req, res)=> {
+  res.render('login', {title: '登陆'});
+});
+
+router.post('/login.do', (req, res)=> {
+  var userName = req.body.userName;
+  var password = req.body.password;
+
+  UserService.getByName(userName, password, function (err, data) {
+    if (err) {
+      res.send(JSON.stringify({"result": -1, "reason": "登陆失败" + err}));
+    } else {
+      res.send(JSON.stringify({"result": 0, "data": data}));
+    }
+  });
+});
+
 router.get('/register.do', (req, res)=> {
 
   var modal = {};
