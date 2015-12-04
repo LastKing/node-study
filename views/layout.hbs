@@ -10,6 +10,13 @@
     <link href="/admin/assets/css/animate.css" rel="stylesheet">
     <link href="/admin/assets/css/font-awesome.css" rel="stylesheet"/>
 
+    <!-- 中间加载条 -->
+    <!--<link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-loading-bar.css" rel="stylesheet"/>-->
+    <!--最上面加载 条-->
+    <!--<link href="//cdn.bootcss.com/pace/1.0.2/themes/black/pace-theme-flat-top.css" rel="stylesheet"/>-->
+    <!--弹弹球-->
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-bounce.css" rel="stylesheet"/>
+
 </head>
 <body>
 
@@ -19,6 +26,9 @@
 <script src="/admin/assets/js/skins.js"></script>
 <script src="/admin/assets/js/beyond.js"></script>
 <script src="/admin/assets/js/toastr/toastr.js"></script>
+
+
+<script src="/admin/assets/js/pace.min.js"></script>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -47,5 +57,38 @@
 <div class="jumbotron">
     {{{body}}}
 </div>
+
+<script>
+    paceOptions = {
+        // Disable the 'elements' source
+        elements: true
+    }
+</script>
+
+<script>
+    function load(time) {
+        var x = new XMLHttpRequest();
+        x.open('GET', "http://localhost:3001/font_auth/login.do", true);
+        x.send();
+    }
+
+    //    load(20);
+    //    load(100);
+    //    load(500);
+    //    load(2000);
+    load(9000);
+
+    setTimeout(function () {
+        Pace.ignore(function () {
+            load(9000);
+        })
+    }, 9000);
+
+    Pace.on('hide', function () {
+        console.log('done');
+    });
+
+</script>
+
 </body>
 </html>

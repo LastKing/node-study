@@ -9,3 +9,6 @@ gen
 # Created by .ignore support plugin (hsz.mobi)
 
 node_modules
+
+#忽略本地路径上传...
+config/development.json
