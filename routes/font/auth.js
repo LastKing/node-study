@@ -15,7 +15,7 @@ var email_helper = require('../../common/email_helper');
 var UserService = require('../../services/user');
 
 router.get('/login.do', (req, res)=> {
-  res.render('login', {title: '登陆'});
+  res.render('auth/login', {title: '登陆'});
 });
 
 router.post('/login.do', (req, res)=> {
@@ -36,7 +36,7 @@ router.get('/register.do', (req, res)=> {
   var modal = {};
   modal['title'] = "TooNew博客注册页面";
 
-  res.render('register', modal);
+  res.render('auth/register', modal);
 });
 
 router.post('/register.do', (req, res)=> {

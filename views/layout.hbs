@@ -66,27 +66,27 @@
 </script>
 
 <script>
-    function load(time) {
-        var x = new XMLHttpRequest();
-        x.open('GET', "http://localhost:3001/font_auth/login.do", true);
-        x.send();
-    }
-
-    //    load(20);
-    //    load(100);
-    //    load(500);
-    //    load(2000);
-    load(9000);
-
-    setTimeout(function () {
-        Pace.ignore(function () {
-            load(9000);
-        })
-    }, 9000);
-
-    Pace.on('hide', function () {
-        console.log('done');
-    });
+//    function load(time) {
+//        var x = new XMLHttpRequest();
+//        x.open('GET', "http://localhost:3001/font_auth/login.do", true);
+//        x.send();
+//    }
+//
+//    //    load(20);
+//    //    load(100);
+//    //    load(500);
+//    //    load(2000);
+//    load(9000);
+//
+//    setTimeout(function () {
+//        Pace.ignore(function () {
+//            load(9000);
+//        })
+//    }, 9000);
+//
+//    Pace.on('hide', function () {
+//        console.log('done');
+//    });
 
 </script>
 
