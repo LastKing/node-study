@@ -26,7 +26,7 @@ router.post('/login.do', (req, res)=> {
     if (err) {
       res.send(JSON.stringify({"result": -1, "reason": "登陆失败" + err}));
     } else {
-      res.send(JSON.stringify({"result": 0, "data": data}));
+      res.send(JSON.stringify({"result": 0, "reason": "登陆成功", "data": data}));
     }
   });
 });
