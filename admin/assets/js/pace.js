@@ -1,8 +1,17 @@
 /**
  * Created by toonew on 15-12-4.
+ *
+ * http://www.bubuko.com/infodetail-998019.html
+ * 对pace.js  加载类 原理的解析
  */
 (function() {
-  var AjaxMonitor, Bar, DocumentMonitor, ElementMonitor, ElementTracker, EventLagMonitor, Evented, Events, NoTargetError, Pace, RequestIntercept, SOURCE_KEYS, Scaler, SocketRequestTracker, XHRRequestTracker, animation, avgAmplitude, bar, cancelAnimation, cancelAnimationFrame, defaultOptions, extend, extendNative, getFromDOM, getIntercept, handlePushState, ignoreStack, init, now, options, requestAnimationFrame, result, runAnimation, scalers, shouldIgnoreURL, shouldTrack, source, sources, uniScaler, _WebSocket, _XDomainRequest, _XMLHttpRequest, _i, _intercept, _len, _pushState, _ref, _ref1, _replaceState,
+  var AjaxMonitor, Bar, DocumentMonitor, ElementMonitor, ElementTracker,
+    EventLagMonitor, Evented, Events, NoTargetError, Pace, RequestIntercept,
+    SOURCE_KEYS, Scaler, SocketRequestTracker, XHRRequestTracker, animation, avgAmplitude,
+    bar, cancelAnimation, cancelAnimationFrame, defaultOptions, extend, extendNative,
+    getFromDOM, getIntercept, handlePushState, ignoreStack, init, now, options, requestAnimationFrame,
+    result, runAnimation, scalers, shouldIgnoreURL, shouldTrack, source, sources, uniScaler, _WebSocket,
+    _XDomainRequest, _XMLHttpRequest, _i, _intercept, _len, _pushState, _ref, _ref1, _replaceState,
     __slice = [].slice,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
@@ -28,8 +37,9 @@
       sampleCount: 3,
       lagThreshold: 3
     },
+    //设定  监听 post 和 get 两种方式的  xml请求
     ajax: {
-      trackMethods: ['GET'],
+      trackMethods: ['GET', 'POST'],
       trackWebSockets: true,
       ignoreURLs: []
     }
@@ -213,6 +223,9 @@
 
   options = Pace.options = extend({}, defaultOptions, window.paceOptions, getFromDOM());
 
+  /**
+   * pace.js 监控了 四类 对象  document  elements ajax  eventLag
+   */
   _ref = ['ajax', 'document', 'eventLag', 'elements'];
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     source = _ref[_i];
@@ -233,6 +246,9 @@
 
   })(Error);
 
+  /**
+   * 操作Dom 用的 类集合
+   */
   Bar = (function() {
     function Bar() {
       this.progress = 0;
@@ -245,17 +261,23 @@
         if (!targetElement) {
           throw new NoTargetError;
         }
+        //创建新div元素
         this.el = document.createElement('div');
+        //为div 添加属性
         this.el.className = "pace pace-active";
+        //  xxx替换className中的属性名。。。---》 不懂。。
         document.body.className = document.body.className.replace(/pace-done/g, '');
         document.body.className += ' pace-running';
+        //为el 写入 html
         this.el.innerHTML = '<div class="pace-progress">\n  <div class="pace-progress-inner"></div>\n</div>\n<div class="pace-activity"></div>';
         if (targetElement.firstChild != null) {
+          //insertBefore() 方法在您指定的已有子节点之前插入新的子节点。
           targetElement.insertBefore(this.el, targetElement.firstChild);
         } else {
           targetElement.appendChild(this.el);
         }
       }
+      //为本身赋予一个el
       return this.el;
     };
 
