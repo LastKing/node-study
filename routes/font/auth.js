@@ -10,6 +10,9 @@
  */
 var express = require('express');
 var router = express.Router();
+
+var validator = require('validator')
+
 var email_helper = require('../../common/email_helper');
 
 var UserService = require('../../services/user');
@@ -19,8 +22,8 @@ router.get('/login.do', (req, res)=> {
 });
 
 router.post('/login.do', (req, res)=> {
-  var userName = req.body.userName;
-  var password = req.body.password;
+  var userName = validator.trim(req.body.userName);
+  var password = validator.trim(req.body.password);
 
   UserService.getByName(userName, password, function (err, data) {
     if (err) {
@@ -40,24 +43,32 @@ router.get('/register.do', (req, res)=> {
 });
 
 router.post('/register.do', (req, res)=> {
-  var user = req.body;
+  var userName = validator.trim(req.body.userName);
+  var password = validator.trim(req.body.password);
+  var repassword = validator.trim(req.body.repassword);
+  var email = validator.trim(req.body.email);
 
-  email_helper.sendMail(user.email, '我是验证码  999999');
+  //email_helper.sendMail(user.email, '我是验证码  999999');
+
+  var user = {
+    userName: userName,
+    password: password,
+    repassword: repassword,
+    email: email
+  };
 
   UserService.add(user, function (err, result) {
     if (err) {
       res.send(JSON.stringify({"result": -1, "reason": "注册失败" + err}));
     } else {
-      res.send(JSON.stringify({"result": 0, "data": result}));
+      res.send(JSON.stringify({"result": 0, "reason": "注册成功", "data": result}));
     }
   });
 });
-
 
 router.post('/verificateEmail.do', (req, res)=> {
 
   res.send(JSON.stringify({"result": 0, "data": "验证邮箱"}));
 });
-
 
 module.exports = router;

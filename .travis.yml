@@ -3,6 +3,7 @@ services: mongodb
 node_js:
   - "4.2"
 before_install:
+  - "mkdir /var/log/toonew/"
   - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-meteor-packages/master/configure.sh | /bin/sh"
 before_script:
   - "export PATH=$HOME/.meteor:$PATH"
