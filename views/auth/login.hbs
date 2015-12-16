@@ -29,6 +29,9 @@
         $.post('/font_auth/login.do', user, function (data) {
             if (data.result == 0) {
                 Notify("登陆成功!马上跳转!", 'top-right', '5000', 'success', 'fa-bolt', true);
+                setTimeout(function () {
+                    window.location.href = '/'
+                }, 1000);
             } else {
                 Notify("用户名或者密码错误!", 'top-right', '5000', 'danger', 'fa-bolt', true);
             }

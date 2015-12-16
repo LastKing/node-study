@@ -12,7 +12,11 @@ var RootCtrl = root.controller('RootCtrl', function ($scope, $state, $http) {
       name: '用户管理',
       icon: 'menu-icon fa fa-user',
       route: 'user'
-    },{
+    }, {
+      name: '博文提交',
+      icon: 'menu-icon fa fa-user',
+      route: 'article'
+    }, {
       name: '用户管理',
       icon: 'menu-icon fa fa-user',
       children: [
