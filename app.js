@@ -2,10 +2,11 @@ var express = require('express');
 var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
-var log4js = require('log4js');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+/******包装工具类****/
+var logger = require('./common/logger');
 
 var admin_index = require('./routes/admin/index');
 var admin_user = require('./routes/admin/user');
@@ -26,32 +27,8 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //app.use(logger('dev'));
 
-//log4js 的 appenders 设定
-//*  配置日志
-//*  注意： 创建日志文件的目录， 并赋予对应的权限
-log4js.configure({
-  "appenders": [
-    {type: 'console'}, //控制台输出
-    {//正常日志输出
-      type: 'file',
-      filename: require('config').get('logPath') + '/debug.log',
-      maxLogSize: 204800,
-      backups: 4
-    },
-    {//错误级别日志输出
-      type: 'logLevelFilter',
-      level: 'ERROR',
-      appender: {
-        type: 'file',
-        filename: require('config').get('logPath') + '/error.log',
-        maxLogSize: 204800,
-        backups: 4
-      }
-    }
-  ]
-});
-
-//更换 log4js 的 命令行 输出
+//测试用输出 log4js 的 命令行 输出
+var log4js = require('log4js');
 app.use(log4js.connectLogger(log4js.getLogger('express'), {level: log4js.levels.INFO}));
 
 //开启 body 解析。。。
