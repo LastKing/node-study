@@ -28,6 +28,7 @@ app.set('view engine', 'hbs');
 //app.use(logger('dev'));
 
 //测试用输出 log4js 的 命令行 输出
+//app.use(logger);
 var log4js = require('log4js');
 app.use(log4js.connectLogger(log4js.getLogger('express'), {level: log4js.levels.INFO}));
 
