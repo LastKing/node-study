@@ -11,7 +11,7 @@
 var express = require('express');
 var router = express.Router();
 
-var validator = require('validator')
+var validator = require('validator');
 
 var email_helper = require('../../common/email_helper');
 
