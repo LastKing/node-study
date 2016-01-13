@@ -3,5 +3,5 @@
   //mongo 数据库的连接地址
   "mongodb": "mongodb://localhost:27017/toonew",
   //日志路径
-  "logPath": "logs"
+  "logPath": "/var/log/logs"
 }
