@@ -7,5 +7,6 @@ COPY package.json /usr/src/app/
 RUN npm install
 COPY . /usr/src/app
 
+RUN mkdir -p /var/log/toonew
 
 EXPOSE 3001
