@@ -17,4 +17,4 @@ COPY . /usr/src/app
 
 EXPOSE 3001
 
-CMD node bin/www
+CMD node /usr/src/app/bin/www
