@@ -16,7 +16,7 @@ var add = function (user, callback) {
       callback('数据库连接失败');
     } else {
       var userCol = db.collection('user');
-      userCol.insertOne(user, function (err, result) {
+      userCol.insert(user, function (err, result) {
         if (err) {
           callback(err);
         } else {
