@@ -9,4 +9,11 @@ router.get('/', function (req, res, next) {
   res.render('index', {title: 'TooNew博客'});
 });
 
+// 开启jsonp  跨域请求
+router.get('/jsonp.do', (req, res)=> {
+  var data = {'name': 'jifeng', 'company': 'taobao'};
+
+  res.jsonp(data);
+});
+
 module.exports = router;
