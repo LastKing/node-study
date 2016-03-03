@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../admin/assets/js/jquery-2.0.3.min.js"></script>
+</head>
+<body>
+
+<div>
+    <input type="button" id="test" value="测试">
+</div>
+
+<script>
+
+    function CreateScript(src) {
+        $('<script><\/script>').attr("src", src).appendTo("body");
+    }
+
+    function jsonpcallback(json) {
+        console.log(json)
+    }
+
+    $('#test').on('click', function () {
+//        $.post('localhost:3001/jsonp.do', function (data) {
+//            console.log(data);
+//        });
+
+        CreateScript("http://localhost:3001/jsonp.do?callback=jsonpcallback");
+
+//        $.ajax({
+//            url: 'http://localhost:3001/jsonp.do',
+//            dataType: "JSONP",
+//            success: function (data) {
+//                console.log(data)
+//            }
+//        })
+    })
+</script>
+
+
+</body>
+</html>
