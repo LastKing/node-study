@@ -36,6 +36,13 @@
 //            }
 //        })
     });
+
+    function foo(i, j,k) {
+        console.log(arguments.length);
+        console.log(arguments.callee.length);
+    }
+
+    foo(1, 2, 3, 4);
 </script>
 
 
