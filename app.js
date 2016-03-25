@@ -13,9 +13,9 @@ var admin_user = require('./routes/admin/user');
 var admin_auth = require('./routes/admin/auth');
 
 /******前端页面*******/
-var font_index = require('./routes/font/index');
-var font_auth = require('./routes/font/auth');
-var font_user = require('./routes/font/user');
+var font_index = require('./routes/front/index');
+var font_auth = require('./routes/front/auth');
+var font_user = require('./routes/front/user');
 
 var app = express();
 
